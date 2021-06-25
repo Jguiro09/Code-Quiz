@@ -31,27 +31,21 @@
 //     1. Set / Get highscores with local storage
 //     2. Object for info?
 
-// Variables:
-
-//     GLOBAL:
-//         1. var timeLeft
-//         2. obj template for user?
-//         3. Array of Ojects
-//         4. 
-//
 
 console.log("connected!");
 
 // Used as the timer for the multiple choice game
-var timeLeft;
-
 
 // References To HTML
+questionaireHTML = document.querySelector(".questionaire");
 questionHTML = document.querySelector("#question");
 answer1HTML = document.querySelector("#answer1");
 answer2HTML = document.querySelector("#answer2");
 answer3HTML = document.querySelector("#answer3");
 answer4HTML = document.querySelector("#answer4");
+time = document.querySelector("#timer");
+
+timeLeft = 100;
 
 
 // Questions asked in the multiple choice
@@ -165,8 +159,28 @@ function createButton()
         return button;
 }
 
+// Creates the buttons and hides it until after start
+function setup()
+{
+        answer1HTML.appendChild(createButton());
+        answer1HTML.children[0].innerHTML = questions[0].answer1.text;
+        answer1HTML.setAttribute("class", "setup");
+
+        answer2HTML.appendChild(createButton());
+        answer2HTML.children[0].innerHTML = questions[0].answer2.text;
+        answer2HTML.setAttribute("class", "setup");
+
+        answer3HTML.appendChild(createButton());
+        answer3HTML.children[0].innerHTML = questions[0].answer3.text;
+
+        answer4HTML.appendChild(createButton());
+        answer4HTML.children[0].innerHTML = questions[0].answer4.text;
+        answer4HTML.setAttribute("class", "setup");
+}
+
 function intro()
 {
+        setup();
         questionHTML.setAttribute("class", "start");
         questionHTML.innerHTML = "Welcome To The Quiz!";
 
@@ -174,34 +188,37 @@ function intro()
         answer3HTML.children[0].innerHTML = "Press start to begin!";
 
         answer3HTML.children[0].addEventListener("click", start)
-        
 }
 
 function start()
 {
-        // Resets "title" for questions
+        // Resets buttons and title for questions
         questionHTML.removeAttribute("class", "start");
+        answer1HTML.removeAttribute("class", "setup");
+        answer2HTML.removeAttribute("class", "setup");
+        answer4HTML.removeAttribute("class", "setup");
 
         //Resets answer3HTMLs button so it can be used as an answer choice.
         answer3HTML.children[0].removeEventListener("click", start);
-
         
-
         // Sets Up The Question/AnswerChoices
         questionHTML.innerHTML = questions[0].question;
 
-        answer1HTML.appendChild(createButton());
-        answer1HTML.children[0].innerHTML = questions[0].answer1.text;
 
-        answer2HTML.appendChild(createButton());
-        answer2HTML.children[0].innerHTML = questions[0].answer2.text;
+        // Timer for quiz
+        var timeInterval = setInterval(function () 
+        {
+                timeLeft--;
+                time.innerHTML = "Time: " + timeLeft;
 
-        answer3HTML.children[0].innerHTML = questions[0].answer3.text;
+                if(timeLeft == 0)
+                {
+                        clearInterval(timeInterval);
+                }
+        }, 1000)
 
-        answer4HTML.appendChild(createButton());
-        answer4HTML.children[0].innerHTML = questions[0].answer4.text;
 
-        console.log("success!");
+        
 }
 
 intro();
