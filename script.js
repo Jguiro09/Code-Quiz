@@ -58,18 +58,18 @@ var questions  = [
                 },
 
         answer2: {
-        correct: false,
-        text: "Test Answer 2"
+        text: "Test Answer 2",
+        correct: false
                 },
 
         answer3: {
-        correct: false,
-        text: "Test Answer 3"
+        text: "Test Answer 3",
+        correct: false
         },
 
         answer4: {
-        correct: false,
-        text: "Test Answer 4"
+        text: "Test Answer 4",
+        correct: false
         }
 },
 
@@ -77,7 +77,7 @@ var questions  = [
         question: "Test question 2",
         answer1: {
         correct: true,
-        text: "Test Answer 1"
+        text: "Test Answer 2"
                 },
 
         answer2: {
@@ -100,7 +100,7 @@ var questions  = [
         question: "Test question 3",
         answer1: {
         correct: true,
-        text: "Test Answer 1"
+        text: "Test Answer 3"
                 },
 
         answer2: {
@@ -123,7 +123,7 @@ var questions  = [
         question: "Test question 4",
         answer1: {
         correct: true,
-        text: "Test Answer"
+        text: "Test Answer 4"
                 },
 
         answer2: {
@@ -187,10 +187,14 @@ function intro()
         answer3HTML.appendChild(createButton());
         answer3HTML.children[0].innerHTML = "Press start to begin!";
 
-        answer3HTML.children[0].addEventListener("click", start)
+        answer3HTML.children[0].addEventListener("click", function (a)
+        {
+                a.stopPropagation()
+                start();
+        });
 }
 
-function start()
+function start(event)
 {
         // Resets buttons and title for questions
         questionHTML.removeAttribute("class", "start");
@@ -217,8 +221,99 @@ function start()
                 }
         }, 1000)
 
-
+        //Actual Game
+        console.log(questions.length);
         
+        var i = 0;
+        function changeQuestion(i)
+        {
+                if(i < questions.length)
+                {
+                        questionHTML.innerHTML = questions[i].question;
+                        answer1HTML.children[0].innerHTML = questions[i].answer1.text;
+                        answer2HTML.children[0].innerHTML = questions[i].answer2.text;
+                        answer3HTML.children[0].innerHTML = questions[i].answer3.text;
+                        answer4HTML.children[0].innerHTML = questions[i].answer4.text;
+                }
+                
+                else
+                {
+                        clearInterval(timeInterval);
+                }
+
+        }
+
+        // First Choice
+        answer1HTML.addEventListener("click", function(event)
+        {
+                if(questions[i].answer1.correct == true)
+                {
+                        i++;
+                        changeQuestion(i);
+                }
+
+                else
+                {
+                        i++;
+                        timeLeft = timeLeft - 15;
+                        changeQuestion(i);
+                        console.log(i);
+                }
+        })
+
+        //Second Choice
+        answer2HTML.addEventListener("click", function(event)
+        {
+                if(questions[i].answer2.correct == true)
+                {
+                        i++;
+                        changeQuestion(i);
+                }
+
+                else
+                {
+                        i++;
+                        timeLeft = timeLeft - 15;
+                        changeQuestion(i);
+                        console.log(i);
+                }
+        })
+
+        // Third Choice
+        answer3HTML.addEventListener("click", function(event)
+        {
+                if(questions[i].answer3.correct == true)
+                {
+                        i++;
+                        changeQuestion(i);
+                }
+
+                else
+                {
+                        i++;
+                        timeLeft = timeLeft - 15;
+                        changeQuestion(i);
+                        console.log(i);
+                }
+        })
+
+        //Forth Choice
+        answer4HTML.addEventListener("click", function(event)
+        {
+                if(questions[i].answer4.correct == true)
+                {
+                        i++;
+                        changeQuestion(i);
+                }
+
+                else
+                {
+                        i++;
+                        timeLeft = timeLeft - 15;
+                        changeQuestion(i);
+                        console.log(i);
+                }
+        })
 }
 
 intro();
