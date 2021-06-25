@@ -147,3 +147,8 @@ var highscores =
     name: "wahtever",
     score: "*insert variable*"
 }
+
+console.log()
+console.log(document.querySelector("#question").innerHTML = questions[0].question);
+console.log(questions);
+document.querySelector("#question").innerHTML = questions[0].question;

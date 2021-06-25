@@ -1,0 +1,13 @@
+header
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.questionaire
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
