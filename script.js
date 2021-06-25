@@ -9,10 +9,6 @@
 
 // WHEN I answer a question
 // THEN I am presented with another question
-//     1. Array of questions
-//     2. Array of answers (right and wrong)
-//     3. Array of correct/incorrect
-//     4. Nested arrays?
 //     5. If questions finsihed: clearInterval();
 //     6. time = score;
 
@@ -46,14 +42,25 @@
 
 console.log("connected!");
 
+// Used as the timer for the multiple choice game
 var timeLeft;
 
-var questions = [
-    {
+
+// References To HTML
+questionHTML = document.querySelector("#question");
+answer1HTML = document.querySelector("#answer1");
+answer2HTML = document.querySelector("#answer2");
+answer3HTML = document.querySelector("#answer3");
+answer4HTML = document.querySelector("#answer4");
+
+
+// Questions asked in the multiple choice
+var questions  = [
+{
         question: "Test question 1",
         answer1: {
         correct: true,
-        text: "Test Answer"
+        text: "Test Answer 1"
                 },
 
         answer2: {
@@ -68,15 +75,15 @@ var questions = [
 
         answer4: {
         correct: false,
-        text: "Test Answer 3"
+        text: "Test Answer 4"
         }
-    },
+},
 
-    {
+{
         question: "Test question 2",
         answer1: {
         correct: true,
-        text: "Test Answer"
+        text: "Test Answer 1"
                 },
 
         answer2: {
@@ -91,15 +98,15 @@ var questions = [
 
         answer4: {
         correct: false,
-        text: "Test Answer 3"
+        text: "Test Answer 4"
         }
-    },
+},
 
-    {
+{
         question: "Test question 3",
         answer1: {
         correct: true,
-        text: "Test Answer"
+        text: "Test Answer 1"
                 },
 
         answer2: {
@@ -114,11 +121,11 @@ var questions = [
 
         answer4: {
         correct: false,
-        text: "Test Answer 3"
+        text: "Test Answer 4"
         }
-    },
+},
 
-    {
+{
         question: "Test question 4",
         answer1: {
         correct: true,
@@ -137,18 +144,64 @@ var questions = [
 
         answer4: {
         correct: false,
-        text: "Test Answer 3"
+        text: "Test Answer 4"
         }
-    }
+}
 ]
 
+
+// A place to enter high scores to be sent to the localstorage
 var highscores = 
 {
-    name: "wahtever",
-    score: "*insert variable*"
+name: "wahtever",
+score: "*insert variable*"
 }
 
-console.log()
-console.log(document.querySelector("#question").innerHTML = questions[0].question);
-console.log(questions);
-document.querySelector("#question").innerHTML = questions[0].question;
+
+// Creates a button for each of the answers
+function createButton()
+{
+        var button = document.createElement("button");
+        return button;
+}
+
+function intro()
+{
+        questionHTML.setAttribute("class", "start");
+        questionHTML.innerHTML = "Welcome To The Quiz!";
+
+        answer3HTML.appendChild(createButton());
+        answer3HTML.children[0].innerHTML = "Press start to begin!";
+
+        answer3HTML.children[0].addEventListener("click", start)
+        
+}
+
+function start()
+{
+        // Resets "title" for questions
+        questionHTML.removeAttribute("class", "start");
+
+        //Resets answer3HTMLs button so it can be used as an answer choice.
+        answer3HTML.children[0].removeEventListener("click", start);
+
+        
+
+        // Sets Up The Question/AnswerChoices
+        questionHTML.innerHTML = questions[0].question;
+
+        answer1HTML.appendChild(createButton());
+        answer1HTML.children[0].innerHTML = questions[0].answer1.text;
+
+        answer2HTML.appendChild(createButton());
+        answer2HTML.children[0].innerHTML = questions[0].answer2.text;
+
+        answer3HTML.children[0].innerHTML = questions[0].answer3.text;
+
+        answer4HTML.appendChild(createButton());
+        answer4HTML.children[0].innerHTML = questions[0].answer4.text;
+
+        console.log("success!");
+}
+
+intro();

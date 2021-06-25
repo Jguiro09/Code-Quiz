@@ -2,12 +2,27 @@ header
 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 6vh;
+    background-color: #037DF1;
+    padding: 0vh .5vw 0vh .5vw;
 }
 
+h3
+{
+    margin-top: 1vh;
+    padding: .5vh;
+}
+
+.start
+{
+    font-size:150%;
+}
 
 .questionaire
 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 4vh;
 } 
