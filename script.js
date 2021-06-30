@@ -11,8 +11,9 @@ startGameHTML = document.querySelector("#startGame");
 time = document.querySelector("#timer");
 titleHTML = document.querySelector(".titlePage");
 scoreHTML = document.querySelector("#score");
-highscoreHTML = document.querySelector("#highscoretext");
 hListHTML = document.querySelector("#highscoreList");
+nameHTML = document.querySelector("#nameInput");
+submitHTML = document.querySelector("#submit");
 
 // Javascript Variables
 
@@ -314,7 +315,8 @@ function getHighscore()
     questionaireHTML.setAttribute("class", "setup");
     titleHTML.setAttribute("class", "setup");
     scoreHTML.removeAttribute("class", "setup");
-
+    nameHTML.setAttribute("class", "setup");
+    submitHTML.setAttribute("class", "setup");
     highscore = getLocalStorage(highscore);
     outputHighscore(highscore, hListHTML);
 
@@ -331,19 +333,28 @@ function gameOver()
     titleHTML.setAttribute("class", "setup");
     scoreHTML.removeAttribute("class", "setup");
     viewHTML.setAttribute("class", "setup");
+    nameHTML.removeAttribute("class", "setup");
+    submitHTML.removeAttribute("class", "setup");
 
     highscore = getLocalStorage(highscore);
     time = timeLeft;
-    var name = prompt("Enter your name");
-
-    var person =
+    
+    submitHTML.addEventListener("click", function()
     {
+        nameHTML.setAttribute("class", "setup");
+        submitHTML.setAttribute("class", "setup");
+        var name = nameHTML.value
+        var person =
+        {
         name: name,
         score: timeLeft
-    }
-    highscore.push(person);
-    sort(highscore);
-    outputHighscore(highscore, hListHTML);
-    localStorage.setItem("highscore", JSON.stringify(highscore));
+        }
+
+        highscore.push(person);
+        sort(highscore);
+        outputHighscore(highscore, hListHTML);
+        localStorage.setItem("highscore", JSON.stringify(highscore));
+    })
+    
 }
 intro();
