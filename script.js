@@ -218,7 +218,7 @@ function start()
                 timeLeft = timeLeft - 15;
                 i++;
                 changeQuestion(i);
-                console.log(i);
+                
             }
     });
 
@@ -333,7 +333,7 @@ function gameOver()
     viewHTML.setAttribute("class", "setup");
 
     highscore = getLocalStorage(highscore);
-
+    time = timeLeft;
     var name = prompt("Enter your name");
 
     var person =
