@@ -12,17 +12,27 @@
 <body>
     <header>
         <h1 id = "timer">Time: </h1>
+        <h1 id = "highscore">View Highscore</h1>
     </header>
+<main>
+    <div class="titlePage">
+        <h1 id = "title">Welcome To The MCU Quiz!</h1>
+        <button id = "startGame">Press me to start!</button>
+    </div>
 
     <div class="questionaire">
         <h1 id = "question"></h1>
-        <h3 id = "answer1"></h3>
-        <h3 id = "answer2"></h3>
-        <h3 id = "answer3"></h3>
-        <h3 id = "answer4"></h3>
-        <h3 id = "startGame"></h3>
+        <button id = "answer1"></button>
+        <button id = "answer2"></button>
+        <button id = "answer3"></button>
+        <button id = "answer4"></button>
     </div>
 
+    <div id="score">
+        <div id="highscoretext">Highscores:</div>
+        <ol id = "highscoreList"></ol>
+    </div>
+</main>
     <script src = "script.js"></script>
 </body>
 </html>

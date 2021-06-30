@@ -24,23 +24,49 @@ h3
     display: none;
 }
 
+.start
+{
+    font-size:150%;
+}
+
+.titlePage
+{
+    text-align: center;
+}
+
+div
+{
+    align-items: center;
+    justify-content: center;
+}
+
 button
 {
     padding: 1vh .5vh 1vh .5vh;
     background-color: #1B9AAA;
     color: white;
     border: none;
+    align-self: center;
 }
 
-.start
+div h1, #highscoretext
 {
-    font-size:150%;
+    font-size: 2rem;
+    margin-bottom: 3vh;
 }
 
-.questionaire
+main
 {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 4vh;
+    text-align: center;
 } 
+
+div ol li
+{
+    border: 3px solid black;
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
+}
