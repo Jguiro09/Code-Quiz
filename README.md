@@ -10,6 +10,8 @@ To showcase my javascript skills by programming a multiple choice question game.
 
 ## Demo of Website
 
+![Website Example](https://raw.githubusercontent.com/Jguiro09/Code-Quiz/main/assets/CPT2106302350-1912x547.gif)
+
 ## License
 Copyright (c) 2013 Mark Otto.
 
