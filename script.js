@@ -1,4 +1,4 @@
-// HTML RECALLS
+// HTML RECALLS----------------------------------
 questionaireHTML = document.querySelector(".questionaire");
 listHTML = document.querySelector("#list");
 viewHTML = document.querySelector("#highscore");
@@ -15,7 +15,7 @@ hListHTML = document.querySelector("#highscoreList");
 nameHTML = document.querySelector("#nameInput");
 submitHTML = document.querySelector("#submit");
 
-// Javascript Variables
+// Javascript Variables----------------------------------------
 
 // Time Left For Game
 timeLeft = 100;
@@ -357,4 +357,5 @@ function gameOver()
     })
     
 }
+
 intro();
