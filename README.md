@@ -6,7 +6,7 @@ https://jguiro09.github.io/Code-Quiz/
 
 ## Purpose
 
-To showcase my javascript skills by programming a multiple choice question game. 
+A multiple choice quiz created using HTML, CSS, and Javascript
 
 ## Demo of Website
 
